@@ -21,7 +21,7 @@ export default function Examination() {
     }, [answers]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/questions")
+        fetch(`${process.env.VITE_API_URL}/api/questions`)
             .then(res => res.json())
             .then(data => setQuestions(data))
             .catch(() => Swal.fire("Error", "Failed to load questions", "error"));
@@ -40,7 +40,7 @@ export default function Examination() {
         if (!confirm.isConfirmed) return;
 
         try {
-            const res = await fetch("http://localhost:5000/api/exam/submit", {
+            const res = await fetch(`${process.env.VITE_API_URL}/api/exam/submit`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

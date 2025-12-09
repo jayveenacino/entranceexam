@@ -20,9 +20,12 @@ app.use("/api/exam", examRoutes);
 app.use("/api/results", resultsRoutes);
 app.use("/api/folders", folderRoutes);
 
-mongoose
-    .connect("mongodb://127.0.0.1:27017/entrance_exam")
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.log("DB error:", err));
-
-app.listen(5000, () => console.log("SERVER RUNNING ON PORT 5000"));
+mongoose.connect("mongodb://127.0.0.1:27017/entrance_exam")
+    .then(() => {
+        app.listen("5000", "0.0.0.0", () => {
+            console.log("Database is ready")
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })

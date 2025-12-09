@@ -1,0 +1,399 @@
+.q-container {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 80, 20, 0.08);
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sub-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+
+.subject-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
+.sub-item {
+    flex-shrink: 0;
+}
+
+.right-fixed {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.add-subject input {
+    width: 130px;
+}
+
+.sub-item {
+    padding: 8px 16px;
+    background: #b7f3cd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0a6a25;
+    border: 1.5px solid transparent;
+    transition: 0.18s ease;
+}
+
+.sub-item:hover {
+    background: #e2f6e8;
+}
+
+.sub-item.active {
+    background: #c6efcf;
+    border-color: #0a6a25;
+}
+
+.add-subject {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.add-subject input {
+    width: 180px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1.4px solid #b9ccb5;
+}
+
+.add-subject button {
+    padding: 8px 14px;
+    background: #0a6a25;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.18s;
+}
+
+.add-subject button:hover {
+    background: #084d1b;
+}
+
+.all-btn {
+    padding: 8px 16px;
+    background: #0a6a25;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.18s;
+}
+
+.all-btn:hover {
+    background: #084d1b;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.header h2 {
+    color: #0a6a25;
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+
+.header button {
+    padding: 9px 16px;
+    background: #0a6a25;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.18s;
+}
+
+.header button:hover {
+    background: #084d1b;
+}
+
+.q-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.q-item {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    border: 1.6px solid #dfeee3;
+    transition: 0.18s ease;
+}
+
+.q-item:hover {
+    border-color: #0a6a25;
+    box-shadow: 0 4px 12px rgba(0, 80, 20, 0.12);
+}
+
+.swal2-container {
+    z-index: 999999 !important;
+}
+
+.opts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.opts span,
+.opts strong {
+    display: block;
+    width: 100%;
+    background: #f3fbf6;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #0a6a25;
+    font-weight: 600;
+    border: 1.5px solid #cfe9d4;
+    line-height: 1.40rem;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.opts strong {
+    background: #e2f7e8;
+    border-color: #0a6a25;
+    font-size: 1rem;
+}
+
+.q-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.q-actions button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.q-actions button:first-child {
+    background: #0a6a25;
+    color: #fff;
+}
+
+.q-actions button:first-child:hover {
+    background: #084d1b;
+}
+
+.q-actions .del {
+    background: #d62828;
+    color: #fff;
+}
+
+.q-actions .del:hover {
+    background: #b41e1e;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 40, 10, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    animation: fadeIn 0.22s ease-out;
+}
+
+.m-box {
+    background: #ffffff;
+    width: 460px;
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    box-shadow: 0 10px 26px rgba(0, 80, 20, 0.20);
+    animation: popIn 0.25s ease-out;
+    border: 2px solid #cfe9d4;
+}
+
+.m-box.big {
+    width: 560px;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.88);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #0a6a25;
+    transition: 0.2s ease;
+}
+
+.close:hover {
+    transform: scale(1.15);
+    color: #084d1b;
+}
+
+.m-box input,
+.m-box select {
+    padding: 10px 14px;
+    border: 1.6px solid #cfe6d2;
+    border-radius: 9px;
+    font-size: 1rem;
+    transition: 0.18s;
+}
+
+.m-box input:focus,
+.m-box select:focus {
+    border-color: #0a6a25;
+    outline: none;
+}
+
+.m-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.m-actions button {
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    color: #fff;
+}
+
+.m-actions button:first-child {
+    background: #0a6a25;
+}
+
+.m-actions button:first-child:hover {
+    background: #084d1b;
+}
+
+.m-actions .cancel {
+    background: #d62828;
+}
+
+.m-actions .cancel:hover {
+    background: #b41e1e;
+}
+
+.sub-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid #e6efe8;
+    align-items: center;
+}
+
+.sub-list-item span {
+    color: #0a6a25;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.sub-list-item button {
+    padding: 7px 14px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.sub-list-item button:first-child {
+    background: #0a6a25;
+    color: #fff;
+}
+
+.sub-list-item button:first-child:hover {
+    background: #084d1b;
+}
+
+.sub-list-item .del {
+    background: #d62828;
+    color: #fff;
+}
+
+.sub-list-item .del:hover {
+    background: #b41e1e;
+}
+
+.sub-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.subject-scroll {
+    display: flex;
+    gap: 10px;
+}
+
+.right-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.sub-item {
+    flex-shrink: 0;
+}
+
+.add-subject input {
+    width: 130px;
+}

@@ -1,0 +1,119 @@
+.admin-login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+}
+
+.admin-login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    border-top: 5px solid #0e7f2c;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lock-icon {
+    font-size: 36px;
+    color: #0e7f2c;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0e7f2c;
+    box-shadow: 0 0 0 3px rgba(14, 127, 44, 0.15);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: #0e7f2c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 15px;
+}
+
+.login-btn:hover {
+    background: #0a6a25;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #0e7f2c;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-password:hover {
+    color: #0a6a25;
+    text-decoration: underline;
+}
+
+.error-message-box {
+    background: #fff0f0;
+    color: #d93025;
+    border: 1px solid #d93025;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}

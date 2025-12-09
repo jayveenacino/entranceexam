@@ -1,0 +1,16 @@
+:root {
+    --bg: #f6f7fa;
+    --text: #111827;
+    --radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+}

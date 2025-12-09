@@ -1,0 +1,117 @@
+.print-container {
+    width: 820px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    color: #000;
+    font-size: 14px;
+}
+
+.header-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-sub {
+    text-align: center;
+}
+
+.header-form-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0 20px;
+}
+
+.section-box {
+    border: 1px solid #000;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.value {
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+}
+
+.req-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.req-table th {
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.req-table td {
+    padding: 5px 0;
+}
+
+.permit-row {
+    margin-bottom: 10px;
+}
+
+.permit-label {
+    font-weight: bold;
+}
+
+.permit-value {
+    margin-left: 10px;
+}
+
+.permit-text {
+    margin: 15px 0;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+.results-table td {
+    padding: 6px 4px;
+    border-bottom: 1px solid #ccc;
+}
+
+.signature-right {
+    text-align: right;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.footer-box {
+    margin-top: 25px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.info-row .label {
+    font-weight: bold;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+.info-row .value {
+    border-bottom: 1px solid #000;
+    padding: 0 0 2px 2px;
+    min-width: 200px;
+}

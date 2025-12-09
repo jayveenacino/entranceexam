@@ -1,0 +1,125 @@
+.ks-dashboard-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ks-sidebar {
+    width: 240px;
+    background-color: #0a6a25;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 4px 0 15px rgba(54, 54, 54, 0.034);
+    z-index: 1000;
+}
+
+.ks-sidebar-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ks-sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ks-sidebar-menu li {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ks-sidebar-menu li:hover,
+.ks-sidebar-menu li.ks-active {
+    background-color: #1c8a2e;
+    color: #fafafa;
+    font-weight: bold;
+}
+
+.ks-icon {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.ks-main-section {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    display: flex;
+    flex-direction: column;
+    background-color: #f7fafc;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ks-navbar {
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    position: sticky;
+    top: 0;
+}
+
+.ks-navbar-title {
+    font-weight: bold;
+    color: #2f855a;
+    font-size: 1.1rem;
+}
+
+.ks-sidebar-logo-img {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 100px;
+    height: auto;
+}
+
+.ks-sidebar-subtitle {
+    text-align: center;
+    font-size: 0.70rem;
+    color: #ffffff;
+    margin-top: -26px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.ks-navbar-user {
+    display: flex;
+    gap: 10px;
+    color: #2d3748;
+    align-items: center;
+    margin-left: auto;
+}
+
+.ks-main-content {
+    padding: 30px 40px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.ks-main-content h1 {
+    font-size: 2rem;
+    color: #2f855a;
+    margin-bottom: 15px;
+}
+
+.ks-main-content p {
+    font-size: 1rem;
+    color: #4a5568;
+}

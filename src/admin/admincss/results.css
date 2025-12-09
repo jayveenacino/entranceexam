@@ -1,0 +1,280 @@
+.rp2-container {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 80, 20, 0.08);
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.rp2-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.rp2-header h2 {
+    color: #0a6a25;
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+
+.rp2-new-folder-btn {
+    background: #0a6a25;
+    padding: 9px 16px;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.rp2-new-folder-btn:hover {
+    background: #0d7b2c;
+}
+
+.rp2-folder {
+    background: #fff;
+    border: 1.5px solid #dfeee3;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.rp2-folder-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0a6a25;
+    cursor: pointer;
+    background: #f3fff5;
+}
+
+.rp2-folder-content {
+    padding: 10px 0;
+    background: #ffffff;
+    border-top: 1px solid #e0e0e0;
+}
+
+.rp2-user-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #ececec;
+}
+
+.rp2-username {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a6a25;
+}
+
+.rp2-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.rp2-action-btn {
+    background: #e2f7e8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #cfe9d4;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.rp2-action-btn:hover {
+    background: #c6f2d3;
+}
+
+.rp2-empty {
+    padding: 10px 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.rp2-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rp2-modal-box {
+    background: #fff;
+    width: 360px;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.rp2-modal-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid #cfe6d2;
+    margin: 14px 0;
+}
+
+.rp2-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.rp2-cancel-btn,
+.rp2-save-btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.rp2-cancel-btn {
+    background: #ddd;
+}
+
+.rp2-save-btn {
+    background: #0a6a25;
+    color: white;
+}
+
+.rp2-save-btn:hover {
+    background: #0d7b2c;
+}
+
+.rp2-folder {
+    position: relative;
+}
+
+#print-area {
+    display: none;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #print-area,
+    #print-area * {
+        visibility: visible;
+    }
+    #print-area {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px;
+        background: white;
+    }
+}   
+
+.rp2-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.rp2-modal-box {
+    background: #fff;
+    width: 380px;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.rp2-modal-box h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-align: center;
+    color: #293241;
+}
+
+
+.rp2-edit-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rp2-edit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rp2-edit-label {
+    width: 45%;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.rp2-edit-input {
+    width: 20%;
+    padding: 7px 10px;
+    font-size: 15px;
+    border: 1px solid #c6c6c6;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.rp2-edit-input:focus {
+    border-color: #095821;
+}
+
+
+.rp2-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.rp2-cancel-btn {
+    padding: 7px 15px;
+    background: #aaa;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.rp2-cancel-btn:hover {
+    background: #909090;
+}
+
+.rp2-save-btn {
+    padding: 7px 15px;
+    background: #096115;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.rp2-save-btn:hover {
+    background: #033007;
+}

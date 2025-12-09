@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import schoolLogo from "../assets/images/kns_logo.png";
 import "../css/student_css/register.css";
 
+
+
 export default function Register() {
     const [form, setForm] = useState({
         name: "",
@@ -39,11 +41,13 @@ export default function Register() {
         e.preventDefault();
 
         try {
-            const res = await fetch(`${process.env.VITE_API_URL}/api/users/register`, {
+            const API_URL = import.meta.env.VITE_API_URL;
+            const res = await fetch(`${API_URL}/api/users/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)
             });
+
 
             const text = await res.text();
 

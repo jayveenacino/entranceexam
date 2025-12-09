@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./admincss/results.css";
+import logo from "../assets/images/kns_logo.png"
 
 export default function StudentPrint({ student }) {
     const [subjects, setSubjects] = useState([]);
@@ -25,6 +26,13 @@ export default function StudentPrint({ student }) {
 
     return (
         <div id="print-area">
+
+
+            <img
+                src={logo}
+                alt="Kolehiyo ng Subic Logo"
+                style={{ width: "80px", height: "auto", marginBottom: "100px", position: "absolute", marginLeft: "150px" }}
+            />
             <div style={{ textAlign: "center", fontWeight: "bold", fontSize: "20px" }}>
                 KOLEHIYO NG SUBIC
             </div>
@@ -39,10 +47,19 @@ export default function StudentPrint({ student }) {
 
             <hr />
 
-            <div style={{ marginTop: "4px", marginBottom: "15px", padding: "15px" }}>
+            <div style={{ marginTop: "4px", marginBottom: "15px", padding: "15px", fontSize: "13px" }}>
+
                 <div className="info-row">
                     <span className="label">
-                        DATE: <span style={{ fontWeight: "bold", fontSize: "13px" }}>{student.createdAt}</span>
+                        DATE:{" "}
+                        <span style={{ fontWeight: "bold", fontSize: "13px" }}>
+                            {new Date(student.createdAt).toLocaleDateString("en-US", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            }).toUpperCase()}
+                        </span>
                     </span>
                 </div>
 
@@ -51,7 +68,7 @@ export default function StudentPrint({ student }) {
                         Name: <span style={{ fontWeight: "bold" }}>{student.name}</span>
                     </span>
 
-                    <span className="label" style={{ marginLeft: "330px" }}>
+                    <span className="label" style={{ marginLeft: "220px" }}>
                         SEX: <span style={{ fontWeight: "bold" }}>{student.sex}</span>
                     </span>
                 </div>
@@ -66,7 +83,7 @@ export default function StudentPrint({ student }) {
                 <div className="info-row" style={{ marginBottom: "8px" }}>
                     <span className="label">
                         Course Taken (for transferees only):
-                        <span style={{ fontWeight: "bold" }}> {student.courseTaken}</span>
+                        <span style={{ fontWeight: "bold" }}> {student.transfereeCourse}</span>
                     </span>
                 </div>
 
@@ -98,6 +115,136 @@ export default function StudentPrint({ student }) {
                         </span>
                     </div>
                 </div>
+
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        marginTop: "20px",
+                        fontWeight: "bold",
+                        borderTop: "2px solid black",
+                        borderLeft: "2px solid black",
+                        fontSize: "11px",
+                    }}
+                >
+                    <div
+                        style={{
+                            textAlign: "center",
+                            borderBottom: "2px solid black",
+                            borderRight: "2px solid black",
+                            padding: "8px",
+                        }}
+                    >
+                        INCOMING FIRST YEAR
+                    </div>
+                    <div
+                        style={{
+                            textAlign: "center",
+                            borderBottom: "2px solid black",
+                            borderRight: "2px solid black",
+                            padding: "8px",
+                        }}
+                    >
+                        FOR TRANSFEREE
+                    </div>
+
+                    {[
+                        "( ) High School Card/Form 138",
+                        "( ) Certificate of Good Moral Character",
+                        "( ) Barangay Certificate of Residency",
+                        "( ) Two (2) 2X2 Colored Pictures",
+                        "( ) PSA Certified Birth Certificate (1 Original and 1 Photocopy)",
+                        "( ) Two (2) 2X2 Long Brown Envelopes",
+                    ].map((item, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                borderBottom: "2px solid black",
+                                borderRight: "2px solid black",
+                                padding: "8px",
+                            }}
+                        >
+                            {item}
+                        </div>
+                    ))}
+
+                    {[
+                        "( ) Transcript of record/certificate of Grades",
+                        "( ) Honorable Dismissal",
+                        "( ) Barangay Certificate of Residency",
+                        "( ) Two (2) 2X2 Colored Pictures",
+                        "( ) PSA Certified Birth Certificate (1 Original and 1 Photocopy)",
+                        "( ) Two (2) 2X2 Long Brown Envelopes",
+                    ].map((item, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                borderBottom: "2px solid black",
+                                borderRight: "2px solid black",
+                                padding: "8px",
+                            }}
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+
+                <div
+                    style={{
+                        textAlign: "center",
+                        marginLeft: "400px",
+                        marginTop: "30px",
+                        fontWeight: "bold",
+                        fontSize: "12px",
+                    }}
+                >
+                    <span style={{ textDecoration: "underline" }}>Ms. Thelma Laxamana</span>
+                    <br />
+                    Registrar
+                </div>
+
+                <hr />
+                <div className="info-row" style={{ paddingTop: "50px" }}>
+                    <span className="label" style={{ marginLeft: "390px" }}>
+                        DATE:{" "}
+                        <span style={{ fontWeight: "bold", fontSize: "13px" }}>
+                            {new Date(student.createdAt).toLocaleDateString("en-US", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            }).toUpperCase()}
+                        </span>
+                    </span>
+                </div>
+
+                <div className="location" style={{ paddingTop: "20px" }}>
+                    Mr./Ms: <span style={{ fontWeight: "bold" }}>{student.name} </span> is granted to take Entrance Examination{" "}
+                    <span style={{ fontWeight: "bold" }}>
+                        {new Date(student.createdAt).toLocaleDateString("en-US", {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        }).toUpperCase()}
+                    </span>
+                </div>
+
+                <div
+                    style={{
+                        textAlign: "center",
+                        marginLeft: "400px",
+                        marginTop: "30px",
+                        fontWeight: "bold",
+                        fontSize: "12px",
+                    }}
+                >
+                    <span style={{ textDecoration: "underline" }}>Ms. Thelma Laxamana</span>
+                    <br />
+                    Registrar
+                </div>
+
+                <br />
 
                 <h3 style={{ marginTop: "25px" }}>Entrance Examination Results</h3>
 
@@ -140,23 +287,21 @@ export default function StudentPrint({ student }) {
                     TOTAL SCORE: {examResult?.totalScore || 0}
                 </div>
 
+
                 <div style={{ textAlign: "center", marginLeft: "400px", marginTop: "30px" }}>
                     _______________________<br />
-                    Examinee Signature
-                </div>
-
-                <div style={{ textAlign: "center", marginRight: "420px", marginTop: "-40px" }}>
-                    _______________________<br />
-                    Examiner
+                    Signature
                 </div>
 
                 <div style={{ marginTop: "20px" }}>
+                    Noted by:
+                    <br />
+                    <br />
+                    <br />
                     <strong>PABLO MENDIOGARIN , MAED-GC</strong><br />
-                    Guidance Counselor
+                    <span style={{ textAlign: "center", marginLeft: "45px" }}>Guidance Counselor</span>
                 </div>
             </div>
-
-            <hr />
 
         </div>
     );

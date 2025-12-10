@@ -5,7 +5,7 @@ export default function ExamProtectedRoute() {
     const user = localStorage.getItem("exam_user");
 
     if (!user) {
-        return <Navigate to="/register" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return <Outlet />;

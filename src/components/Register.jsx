@@ -23,8 +23,12 @@ export default function Register() {
     });
 
     const availableCourses = [
-        "BS Education",
-        "BS Computer Science",
+        "Bachelor of Science in Computer Science",
+        "Bachelor of Secondary Education major in Filipino (BSED – Filipino)",
+        "Bachelor of Secondary Education major in English (BSED – English)",
+        "Bachelor of Secondary Education major in Mathematics (BSED – Math)",
+        "Bachelor of Secondary Education major in Social Studies (BSED – Social Studies)",
+        "Bachelor of Elementary Education (BEEd)",
         "BS Hospitality Management",
         "BS Accountancy",
         "BS Business Administration (Financial Management)",
@@ -97,7 +101,7 @@ export default function Register() {
 
                     <div className="form-group">
                         <label htmlFor="fullName">Full Name *</label>
-                        <input type="text" id="fullName" name="name" value={form.name} onChange={handleChange} required />
+                        <input type="text" id="fullName" name="name" placeholder="Lastname. Firstname, Middlename" value={form.name} onChange={handleChange} required />
                     </div>
 
                     <div className="form-row">

@@ -10,6 +10,8 @@ export default function Examination() {
     const [isExamFinished, setIsExamFinished] = useState(false);
     const [timeLeft, setTimeLeft] = useState(3000);
 
+    const [showModal, setShowModal] = useState(false);
+
     const user = JSON.parse(localStorage.getItem("exam_user"));
 
     useEffect(() => {
@@ -138,6 +140,7 @@ export default function Examination() {
 
     return (
         <div className="exam-only-wrapper">
+
             <div style={{
                 position: "fixed",
                 top: "10px",
@@ -206,6 +209,79 @@ export default function Examination() {
                     </footer>
                 </div>
             </form>
+
+            <button
+                onClick={() => setShowModal(true)}
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "20px",
+                    background: "#0a6a25",
+                    color: "#fff",
+                    padding: "12px 18px",
+                    border: "none",
+                    borderRadius: "50px",
+                    cursor: "pointer",
+                    zIndex: 1500,
+                    fontSize: "14px",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
+                }}
+            >
+                BTN FOR READING
+            </button>
+
+            {showModal && (
+                <div style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.6)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 2000
+                }}>
+                    <div style={{
+                        width: "70%",
+                        maxHeight: "70vh",
+                        background: "#fff",
+                        padding: "20px",
+                        borderRadius: "10px",
+                        overflowY: "auto",
+                        boxShadow: "0 6px 15px rgba(0,0,0,0.3)"
+                    }}>
+                        <h2>Reading Passage</h2>
+
+                        <p style={{ textAlign: "justify", lineHeight: "1.6" }}>
+                            Cancer is a disease in which cells somehow become activated into uncontrolled 
+                            multiplication and thus produce an overgrowth, or tumor, composed of malformed, 
+                            malignant cells. Cancerous tumors can occur in almost any tissue of the body, 
+                            although some are more often affected than others. Three general kinds of cancer 
+                            are recognized: carcinomas, which involve epithelial tissue; sarcomas, which affect 
+                            connective tissues including bones; and leukemias, which start in the bone marrow 
+                            and lymphatic tissues and spread in the blood and lymph.
+                        </p>
+
+                        <button
+                            onClick={() => setShowModal(false)}
+                            style={{
+                                marginTop: "15px",
+                                padding: "10px 20px",
+                                background: "#c62828",
+                                color: "#fff",
+                                border: "none",
+                                borderRadius: "5px",
+                                cursor: "pointer"
+                            }}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }

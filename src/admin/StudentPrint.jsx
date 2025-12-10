@@ -75,6 +75,42 @@ export default function StudentPrint({ student }) {
 
                 <div className="info-row" style={{ marginBottom: "8px" }}>
                     <span className="label">
+                        Address:
+                        <span style={{ fontWeight: "bold" }}> {student.address}</span>
+                    </span>
+                </div>
+
+                <div className="info-row" style={{ marginBottom: "8px" }}>
+                    <span className="label">
+                        Date of Birth:
+                        <span style={{ fontWeight: "bold" }}> {student.dob}</span>
+                    </span>
+                    <span className="label" style={{ marginLeft: "190px" }}>
+                        Place of Birth:
+                        <span style={{ fontWeight: "bold" }}> {student.pob}</span>
+                    </span>
+                </div>
+
+                <div className="info-row" style={{ marginBottom: "8px" }}>
+                    <span className="label">
+                        Contact Number:
+                        <span style={{ fontWeight: "bold" }}> {student.contact}</span>
+                    </span>
+                    <span className="label" style={{ marginLeft: "150px" }}>
+                        Name of Guardian:
+                        <span style={{ fontWeight: "bold" }}> {student.guardian}</span>
+                    </span>
+                </div>
+
+                <div className="info-row" style={{ marginBottom: "8px" }}>
+                    <span className="label">
+                        School Last Attended:
+                        <span style={{ fontWeight: "bold" }}> {student.lastSchool}</span>
+                    </span>
+                </div>
+
+                <div className="info-row" style={{ marginBottom: "8px" }}>
+                    <span className="label">
                         Address of School Last Attended:
                         <span style={{ fontWeight: "bold" }}> {student.lastSchoolAddress}</span>
                     </span>
@@ -204,7 +240,7 @@ export default function StudentPrint({ student }) {
                 </div>
 
                 <hr />
-                <div className="info-row" style={{ paddingTop: "50px" }}>
+                <div className="info-row" style={{ paddingTop: "20px" }}>
                     <span className="label" style={{ marginLeft: "390px" }}>
                         DATE:{" "}
                         <span style={{ fontWeight: "bold", fontSize: "13px" }}>
@@ -243,8 +279,6 @@ export default function StudentPrint({ student }) {
                     <br />
                     Registrar
                 </div>
-
-                <br />
 
                 <h3 style={{ marginTop: "25px" }}>Entrance Examination Results</h3>
 
@@ -293,7 +327,7 @@ export default function StudentPrint({ student }) {
                     Signature
                 </div>
 
-                <div style={{ marginTop: "20px" }}>
+                <div style={{ marginTop: "15px" }}>
                     Noted by:
                     <br />
                     <br />

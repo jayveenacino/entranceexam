@@ -83,6 +83,11 @@ export default function ResultsPage() {
         }
     };
 
+    // ⭐ SORT STUDENT LIST ALPHABETICALLY A–Z ⭐
+    const sortedStudents = [...students].sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
+
     return (
         <div className="rp2-container">
             <div className="rp2-header">
@@ -107,13 +112,18 @@ export default function ResultsPage() {
 
                         {openFolder === folder._id && (
                             <div className="rp2-folder-content">
-                                {students.length === 0 ? (
+                                {sortedStudents.length === 0 ? (
                                     <p className="rp2-empty">No students found.</p>
                                 ) : (
-                                    students.map(user => (
+                                    
+                                    // ⭐ NUMBERED, SORTED STUDENT LIST ⭐
+                                    sortedStudents.map((user, index) => (
                                         <div key={user._id} className="rp2-user-row">
-                                            <div className="rp2-username">{user.name}</div>
+                                            <div className="rp2-username">
+                                                {index + 1}. {user.name}
+                                            </div>
                                             <div className="rp2-actions">
+
                                                 <button
                                                     className="rp2-action-btn"
                                                     onClick={() => handlePrint(user)}

@@ -20,21 +20,22 @@ export default function ResultsPage() {
 
     useEffect(() => {
         fetchFolders();
-        fetchStudents();
     }, []);
 
     const fetchFolders = async () => {
         try {
             const res = await axios.get(`${API_URL}/results/folders`);
             setFolders(res.data);
-        } catch (err) { }
+        } catch (err) {}
     };
 
-    const fetchStudents = async () => {
+    const fetchStudentsByFolder = async (folderId) => {
         try {
-            const res = await axios.get(`${API_URL}/results/students`);
+            const res = await axios.get(`${API_URL}/results/students/${folderId}`);
             setStudents(res.data);
-        } catch (err) { }
+        } catch (err) {
+            setStudents([]);
+        }
     };
 
     const createFolder = async () => {
@@ -53,40 +54,32 @@ export default function ResultsPage() {
 
     const handlePrint = (student) => {
         setStudentToPrint(student);
-
-        setTimeout(() => {
-            window.print();
-        }, 400);
+        setTimeout(() => window.print(), 400);
     };
 
     const saveEditedScores = async () => {
         try {
-            await axios.put(
-                `${API_URL}/results/update-score/${editingStudent._id}`,
-                { subjectScores: editedScores }
-            );
-
+            await axios.put(`${API_URL}/results/update-score/${editingStudent._id}`, {
+                subjectScores: editedScores,
+            });
             Swal.fire({
                 icon: "success",
                 title: "Scores Updated",
-                text: "Student scores were successfully updated!"
+                text: "Student scores were successfully updated!",
             });
-
-            fetchStudents();
+            fetchStudentsByFolder(openFolder);
             setEditModalOpen(false);
         } catch (err) {
             Swal.fire({
                 icon: "error",
                 title: "Update Failed",
-                text: "Error updating scores."
+                text: "Error updating scores.",
             });
         }
     };
 
-    // ⭐ SORT STUDENT LIST ALPHABETICALLY A–Z ⭐
-    const sortedStudents = [...students].sort((a, b) =>
-        a.name.localeCompare(b.name)
-    );
+    // Sort students alphabetically A-Z
+    const sortedStudents = [...students].sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <div className="rp2-container">
@@ -98,13 +91,15 @@ export default function ResultsPage() {
             </div>
 
             <div className="rp2-folder-list">
-                {folders.map(folder => (
+                {folders.map((folder) => (
                     <div key={folder._id} className="rp2-folder">
                         <div
                             className="rp2-folder-header"
-                            onClick={() =>
-                                setOpenFolder(openFolder === folder._id ? null : folder._id)
-                            }
+                            onClick={() => {
+                                const isOpen = openFolder === folder._id;
+                                setOpenFolder(isOpen ? null : folder._id);
+                                if (!isOpen) fetchStudentsByFolder(folder._id);
+                            }}
                         >
                             <strong>{folder.folderName}</strong>
                             <span>{openFolder === folder._id ? "▲" : "▼"}</span>
@@ -115,22 +110,18 @@ export default function ResultsPage() {
                                 {sortedStudents.length === 0 ? (
                                     <p className="rp2-empty">No students found.</p>
                                 ) : (
-                                    
-                                    // ⭐ NUMBERED, SORTED STUDENT LIST ⭐
                                     sortedStudents.map((user, index) => (
                                         <div key={user._id} className="rp2-user-row">
                                             <div className="rp2-username">
                                                 {index + 1}. {user.name}
                                             </div>
                                             <div className="rp2-actions">
-
                                                 <button
                                                     className="rp2-action-btn"
                                                     onClick={() => handlePrint(user)}
                                                 >
                                                     PRINT
                                                 </button>
-
                                                 <button
                                                     className="rp2-action-btn"
                                                     onClick={() => {
@@ -154,42 +145,32 @@ export default function ResultsPage() {
             {editModalOpen && editingStudent && (
                 <div className="rp2-modal">
                     <div className="rp2-modal-box">
-
                         <h3>Edit Scores</h3>
 
                         <div className="rp2-edit-fields">
                             {Object.keys(editedScores).map((subject) => (
                                 <div key={subject} className="rp2-edit-row">
-                                    <label className="rp2-edit-label">
-                                        {subject.toUpperCase()}
-                                    </label>
-
+                                    <label className="rp2-edit-label">{subject.toUpperCase()}</label>
                                     <input
                                         type="number"
                                         className="rp2-edit-input"
                                         value={editedScores[subject] === null ? "" : editedScores[subject]}
                                         onChange={(e) => {
                                             const val = e.target.value;
-
                                             setEditedScores({
                                                 ...editedScores,
-                                                [subject]: val === "" ? null : Number(val)
+                                                [subject]: val === "" ? null : Number(val),
                                             });
                                         }}
                                     />
-
                                 </div>
                             ))}
                         </div>
 
                         <div className="rp2-modal-actions">
-                            <button
-                                className="rp2-cancel-btn"
-                                onClick={() => setEditModalOpen(false)}
-                            >
+                            <button className="rp2-cancel-btn" onClick={() => setEditModalOpen(false)}>
                                 Cancel
                             </button>
-
                             <button className="rp2-save-btn" onClick={saveEditedScores}>
                                 Save
                             </button>
@@ -202,7 +183,6 @@ export default function ResultsPage() {
                 <div className="rp2-modal">
                     <div className="rp2-modal-box">
                         <h3>Create Folder</h3>
-
                         <input
                             type="text"
                             placeholder="Enter folder name..."
@@ -210,12 +190,11 @@ export default function ResultsPage() {
                             onChange={(e) => setFolderName(e.target.value)}
                             className="rp2-modal-input"
                         />
-
                         <div className="rp2-modal-actions">
-                            <button onClick={() => setModalOpen(false)} className="rp2-cancel-btn">
+                            <button className="rp2-cancel-btn" onClick={() => setModalOpen(false)}>
                                 Cancel
                             </button>
-                            <button onClick={createFolder} className="rp2-save-btn">
+                            <button className="rp2-save-btn" onClick={createFolder}>
                                 Save
                             </button>
                         </div>

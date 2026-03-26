@@ -7,8 +7,10 @@ export default function StudentPrint({ student }) {
     const [subjects, setSubjects] = useState([]);
     const [examResult, setExamResult] = useState(null);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
-        axios.get("http://localhost:5000/api/subjects")
+        axios.get(`${API_URL}/api/subjects`)
             .then(res => setSubjects(res.data))
             .catch(() => setSubjects([]));
     }, []);
@@ -17,7 +19,7 @@ export default function StudentPrint({ student }) {
         if (!student?._id) return;
 
         axios
-            .get(`http://localhost:5000/api/exam/result/${student._id}`)
+            .get(`${API_URL}/api/exam/result/${student._id}`)
             .then(res => setExamResult(res.data))
             .catch(() => setExamResult(null));
     }, [student]);

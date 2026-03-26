@@ -16,7 +16,7 @@ export default function ResultsPage() {
     const [editingStudent, setEditingStudent] = useState(null);
     const [editedScores, setEditedScores] = useState({});
 
-    const API_URL = "http://localhost:5000/api";
+    const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         fetchFolders();
@@ -26,7 +26,7 @@ export default function ResultsPage() {
         try {
             const res = await axios.get(`${API_URL}/results/folders`);
             setFolders(res.data);
-        } catch (err) {}
+        } catch (err) { }
     };
 
     const fetchStudentsByFolder = async (folderId) => {

@@ -8,11 +8,26 @@ export default function Examination() {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
     const [isExamFinished, setIsExamFinished] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(3000);
+    const [timerEnabled, setTimerEnabled] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(null);
+
 
     const [showModal, setShowModal] = useState(false);
 
     const user = JSON.parse(localStorage.getItem("exam_user"));
+    useEffect(() => {
+        fetch(`${API_URL}/api/exam/timer-settings`)
+            .then(res => res.json())
+            .then(data => {
+                setTimerEnabled(data.enabled);
+                if (data.enabled) {
+                    setTimeLeft(data.duration);
+                }
+            })
+            .catch(() => {
+                setTimerEnabled(false);
+            });
+    }, [API_URL]);
 
     useEffect(() => {
         if (!user) {
@@ -138,6 +153,34 @@ export default function Examination() {
         );
     }
 
+    useEffect(() => {
+        if (!timerEnabled || isExamFinished || timeLeft === null) return;
+
+        const interval = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(interval);
+
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Time is Up!",
+                        text: "Your exam will be submitted automatically.",
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+
+                    finishExam(true);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [timerEnabled, isExamFinished, timeLeft]);
+
+
     return (
         <div className="exam-only-wrapper">
 
@@ -255,12 +298,12 @@ export default function Examination() {
                         <h2>Reading Passage</h2>
 
                         <p style={{ textAlign: "justify", lineHeight: "1.6" }}>
-                            Cancer is a disease in which cells somehow become activated into uncontrolled 
-                            multiplication and thus produce an overgrowth, or tumor, composed of malformed, 
-                            malignant cells. Cancerous tumors can occur in almost any tissue of the body, 
-                            although some are more often affected than others. Three general kinds of cancer 
-                            are recognized: carcinomas, which involve epithelial tissue; sarcomas, which affect 
-                            connective tissues including bones; and leukemias, which start in the bone marrow 
+                            Cancer is a disease in which cells somehow become activated into uncontrolled
+                            multiplication and thus produce an overgrowth, or tumor, composed of malformed,
+                            malignant cells. Cancerous tumors can occur in almost any tissue of the body,
+                            although some are more often affected than others. Three general kinds of cancer
+                            are recognized: carcinomas, which involve epithelial tissue; sarcomas, which affect
+                            connective tissues including bones; and leukemias, which start in the bone marrow
                             and lymphatic tissues and spread in the blood and lymph.
                         </p>
 

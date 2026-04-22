@@ -4,6 +4,7 @@ import logo from "../assets/images/kns_logo.png";
 import "./admincss/admindashboard.css";
 import Question from "../admin/Question";
 import ResultsPage from "./ResultsPage";
+import ExaminationSettings from "./ExaminationSettings";
 
 export default function AdminDashboard() {
     const [activeMenu, setActiveMenu] = useState("dashboard");
@@ -77,12 +78,7 @@ export default function AdminDashboard() {
                             <p>View, add, or edit student records here.</p>
                         </div>
                     )}
-                    {activeMenu === "exams" && (
-                        <div>
-                            <h1>Exams</h1>
-                            <p>Create, edit, and manage exams here.</p>
-                        </div>
-                    )}
+                    {activeMenu === "exams" && <ExaminationSettings />}
                     {activeMenu === "questions" && <Question />}
                     {activeMenu === "results" && <ResultsPage />}
                     {activeMenu === "settings" && (

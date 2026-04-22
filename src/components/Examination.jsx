@@ -141,13 +141,19 @@ export default function Examination() {
 
     if (isExamFinished) {
         return (
-            <div className="exam-only-wrapper exam-finished">
-                <header className="exam-only-header">
-                    <h1 className="exam-only-title">KOLEHIYO NG SUBIC</h1>
+            <div className="exam-bg-header">
+                <header className="exam-header-banner">
+                    <h1 className="exam-banner-title">KOLEHIYO NG SUBIC</h1>
                 </header>
-                <div className="finish-message">
-                    <h2>Exam Completed! 🎉</h2>
-                    <p>Redirecting to registration...</p>
+
+                <div className="exam-only-wrapper exam-finished">
+                    <header className="exam-only-header">
+                        <h1 className="exam-only-title">KOLEHIYO NG SUBIC</h1>
+                    </header>
+                    <div className="finish-message">
+                        <h2>Exam Completed! 🎉</h2>
+                        <p>Redirecting to registration...</p>
+                    </div>
                 </div>
             </div>
         );
@@ -182,149 +188,156 @@ export default function Examination() {
 
 
     return (
-        <div className="exam-only-wrapper">
+        <div className="exam-bg-header">
 
-            <div style={{
-                position: "fixed",
-                top: "10px",
-                right: "20px",
-                fontSize: "18px",
-                backgroundColor: "#0a6a25",
-                color: "#fff",
-                padding: "5px 10px",
-                borderRadius: "5px",
-                zIndex: 1000
-            }}>
-                Time Left: {formatTime(timeLeft)}
-            </div>
-
-            <header className="exam-only-header">
-                <h1 className="exam-only-title">KOLEHIYO NG SUBIC</h1>
+            <header className="exam-header-banner">
+                <h1 className="exam-banner-title">KOLEHIYO NG SUBIC</h1>
             </header>
 
-            <form onSubmit={(e) => { e.preventDefault(); finishExam(); }} className="exam-only-form">
-                <div className="questions-column">
-                    {Object.keys(questionsBySubject).map(subject => (
-                        <div key={subject}>
-                            <h1 className="subject-title" style={{ fontSize: "17px", color: "#0a6a25" }}>
-                                {subject.toUpperCase()}
-                            </h1>
+            <div className="exam-only-wrapper">
 
-                            {questionsBySubject[subject].map((question, index) => (
-                                <div key={question._id} className="question-item-card">
-                                    <h2 className="question-text">{index + 1}. {question.text}</h2>
-
-                                    <div className="options-list">
-                                        {["A", "B", "C", "D"].map(letter => {
-                                            const option = question.options?.[letter];
-                                            if (!option) return null;
-                                            const optionId = `q${question._id}-${letter}`;
-
-                                            return (
-                                                <div key={optionId} className="option-item">
-                                                    <input
-                                                        type="radio"
-                                                        id={optionId}
-                                                        name={`question-${question._id}`}
-                                                        value={letter}
-                                                        checked={answers[question._id] === letter}
-                                                        onChange={() => handleAnswerChange(question._id, letter)}
-                                                        className="custom-radio"
-                                                        required
-                                                    />
-                                                    <label htmlFor={optionId}>
-                                                        <span className="option-letter">{letter}.</span>
-                                                        {option}
-                                                    </label>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
-
-                    <footer className="exam-only-footer">
-                        <button type="submit" className="nav-btn finish-btn final-submit">
-                            Finish Exam & Submit Answers
-                        </button>
-                    </footer>
-                </div>
-            </form>
-
-            <button
-                onClick={() => setShowModal(true)}
-                style={{
-                    position: "fixed",
-                    bottom: "20px",
-                    right: "20px",
-                    background: "#0a6a25",
-                    color: "#fff",
-                    padding: "12px 18px",
-                    border: "none",
-                    borderRadius: "50px",
-                    cursor: "pointer",
-                    zIndex: 1500,
-                    fontSize: "14px",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
-                }}
-            >
-                BTN FOR READING
-            </button>
-
-            {showModal && (
                 <div style={{
                     position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "rgba(0,0,0,0.6)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    zIndex: 2000
+                    top: "10px",
+                    right: "20px",
+                    fontSize: "18px",
+                    backgroundColor: "#0a6a25",
+                    color: "#fff",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    zIndex: 1000
                 }}>
+                    Time Left: {formatTime(timeLeft)}
+                </div>
+
+                <header className="exam-only-header">
+                    <h1 className="exam-only-title">ENTRANCE EXAMINATION</h1>
+                </header>
+
+                <form onSubmit={(e) => { e.preventDefault(); finishExam(); }} className="exam-only-form">
+                    <div className="questions-column">
+                        {Object.keys(questionsBySubject).map(subject => (
+                            <div key={subject}>
+                                <h1 className="subject-title" style={{ fontSize: "17px", color: "#0a6a25" }}>
+                                    {subject.toUpperCase()}
+                                </h1>
+
+                                {questionsBySubject[subject].map((question, index) => (
+                                    <div key={question._id} className="question-item-card">
+                                        <h2 className="question-text">{index + 1}. {question.text}</h2>
+
+                                        <div className="options-list">
+                                            {["A", "B", "C", "D"].map(letter => {
+                                                const option = question.options?.[letter];
+                                                if (!option) return null;
+                                                const optionId = `q${question._id}-${letter}`;
+
+                                                return (
+                                                    <div key={optionId} className="option-item">
+                                                        <input
+                                                            type="radio"
+                                                            id={optionId}
+                                                            name={`question-${question._id}`}
+                                                            value={letter}
+                                                            checked={answers[question._id] === letter}
+                                                            onChange={() => handleAnswerChange(question._id, letter)}
+                                                            className="custom-radio"
+                                                            required
+                                                        />
+                                                        <label htmlFor={optionId}>
+                                                            <span className="option-letter">{letter}.</span>
+                                                            {option}
+                                                        </label>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+
+                        <footer className="exam-only-footer">
+                            <button type="submit" className="nav-btn finish-btn final-submit">
+                                Finish Exam & Submit Answers
+                            </button>
+                        </footer>
+                    </div>
+                </form>
+
+                <button
+                    onClick={() => setShowModal(true)}
+                    style={{
+                        position: "fixed",
+                        bottom: "20px",
+                        right: "20px",
+                        background: "#0a6a25",
+                        color: "#fff",
+                        padding: "12px 18px",
+                        border: "none",
+                        borderRadius: "50px",
+                        cursor: "pointer",
+                        zIndex: 1500,
+                        fontSize: "14px",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
+                    }}
+                >
+                    For No. 16-20 ENGLISH
+                </button>
+
+                {showModal && (
                     <div style={{
-                        width: "70%",
-                        maxHeight: "70vh",
-                        background: "#fff",
-                        padding: "20px",
-                        borderRadius: "10px",
-                        overflowY: "auto",
-                        boxShadow: "0 6px 15px rgba(0,0,0,0.3)"
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(0,0,0,0.6)",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        zIndex: 2000
                     }}>
-                        <h2>Reading Passage</h2>
+                        <div style={{
+                            width: "70%",
+                            maxHeight: "70vh",
+                            background: "#fff",
+                            padding: "20px",
+                            borderRadius: "10px",
+                            overflowY: "auto",
+                            boxShadow: "0 6px 15px rgba(0,0,0,0.3)"
+                        }}>
+                            <h2>For Number 16 - 20</h2>
 
                         <p style={{ textAlign: "justify", lineHeight: "1.6" }}>
-                            Cancer is a disease in which cells somehow become activated into uncontrolled
-                            multiplication and thus produce an overgrowth, or tumor, composed of malformed,
-                            malignant cells. Cancerous tumors can occur in almost any tissue of the body,
-                            although some are more often affected than others. Three general kinds of cancer
-                            are recognized: carcinomas, which involve epithelial tissue; sarcomas, which affect
-                            connective tissues including bones; and leukemias, which start in the bone marrow
+                            Cancer is a disease in which cells somehow become activated into uncontrolled 
+                            multiplication and thus produce an overgrowth, or tumor, composed of malformed, 
+                            malignant cells. Cancerous tumors can occur in almost any tissue of the body, 
+                            although some are more often affected than others. Three general kinds of cancer 
+                            are recognized: carcinomas, which involve epithelial tissue; sarcomas, which affect 
+                            connective tissues including bones; and leukemias, which start in the bone marrow 
                             and lymphatic tissues and spread in the blood and lymph.
                         </p>
 
-                        <button
-                            onClick={() => setShowModal(false)}
-                            style={{
-                                marginTop: "15px",
-                                padding: "10px 20px",
-                                background: "#c62828",
-                                color: "#fff",
-                                border: "none",
-                                borderRadius: "5px",
-                                cursor: "pointer"
-                            }}
-                        >
-                            Close
-                        </button>
+                            <button
+                                onClick={() => setShowModal(false)}
+                                style={{
+                                    marginTop: "15px",
+                                    padding: "10px 20px",
+                                    background: "#c62828",
+                                    color: "#fff",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    cursor: "pointer"
+                                }}
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
+            </div>
         </div>
     );
 }

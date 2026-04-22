@@ -129,7 +129,7 @@ export default function Register() {
                             type="text"
                             id="fullName"
                             name="name"
-                            placeholder="Lastname, Firstname, Middlename"
+                            placeholder="Lastname, Firstname Middlename"
                             value={form.name}
                             onChange={handleChange}
                             required
@@ -221,7 +221,7 @@ export default function Register() {
                                 {availableCourses.map(c => (
                                     <option key={c} value={c}>{c}</option>
                                 ))}
-                            </select>
+                            </select>   
                         </div>
 
                         <div className="form-group">
